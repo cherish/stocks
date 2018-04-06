@@ -44,7 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //'npr',
             //'holders',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            'class' => 'yii\grid\ActionColumn',
+            'header' => '操作',
+            'template' => '{view}   {update}  {detail} ',
+            'buttons' => [
+                'detail' => function ($url, $model) {
+                    return Html::a('明细', Yii::$app->urlManager->createUrl(['/tick-data/index', 'code' => $model->code]), ['title' => '明细']);
+                },
+            ],
         ],
+    ],
     ]); ?>
 </div>
